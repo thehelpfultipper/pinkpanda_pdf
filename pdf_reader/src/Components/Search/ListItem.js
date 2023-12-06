@@ -14,11 +14,11 @@ const ListItem = (props) => {
 
     return (
         <Fragment>
-            {popupDisplay && <Popup url={`http://localhost:5000/${img.url}`} onClose={setPopupDisplay} />}
+            {popupDisplay && <Popup url={img.url} onClose={setPopupDisplay} />}
             <li className={s.item}>
                 <span className={s.img}>
                     <img
-                        src={`http://localhost:5000/${img.url}`}
+                        src={img.url}
                         alt={img.alt}
                         onClick={popupDisplayHandler}
                     />
