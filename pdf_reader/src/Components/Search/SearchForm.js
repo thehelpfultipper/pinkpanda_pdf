@@ -44,7 +44,7 @@ const SearchForm = () => {
 
             // let pdfPath = fileInputRef.current.files[0];
 
-            const response = await axios.post("https://pinkpanda-pdf-flask.onrender.com/search-pdf", formData, {
+            const response = await axios.post("https://pinkpandapdf-9v69y74n.b4a.run/search-pdf", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 }
