@@ -1,12 +1,12 @@
 .Info_wrap {
-    background: lightgreen;
+    // background: lightgreen;
     padding: .2rem 1rem;
     margin-top: 2rem;
 
     &.error {
         color: #fff;
         font-weight: 700;
-        background: lightcoral;
+        background: rgb(227, 122, 122);
     }
 
     p {

@@ -8,6 +8,8 @@ import Input from "./Input";
 import Info from "./Info";
 import Skeleton from "../UI/Skeleton";
 
+import s from './SearchForm.module.scss';
+
 const SearchForm = () => {
     let uploadCtx = useContext(UploadContext);
 
@@ -16,6 +18,19 @@ const SearchForm = () => {
     const [screenshots, setScreenshots] = useState([]);
     const [err, setErr] = useState("");
     const [skeleton, setSkeleton] = useState(false);
+    const [fetchMessage, setFetchMessage] = useState("");
+
+    const getFetchMessage = () => {
+        let msgIndex = 0;
+        const messages = ["Fetching data...", "Still fetching data.", "Hang in there! Fetching..."];
+    
+        const intervalId = setInterval( () => {
+            setFetchMessage(messages[msgIndex]);
+            msgIndex = (msgIndex + 1) % messages.length;
+        }, 5000);
+        
+        return intervalId;
+    }
 
     const searchHandler = term => {
         setSearchPhrase(term);
@@ -28,6 +43,7 @@ const SearchForm = () => {
             uploadCtx.setIsError(false); // Clear error
             setErr(""); // Clear error message
             setSkeleton(true); // Toggle skeleton loading animation
+            setFetchMessage("Fetching data..."); 
 
             if (searchPhrase === '') {
                 uploadCtx.setIsError(true);
@@ -50,15 +66,17 @@ const SearchForm = () => {
                 }
             });
 
-            setSkeleton(false);
-
             setMatches(response.data.matches);
             setScreenshots(response.data.screenshots);
         } catch (err) {
             uploadCtx.setIsError(true);
             setErr('Error searching PDF. Try again.');
             setSkeleton(false);
+            setFetchMessage("");
             console.log("Error searching PDF:", err);
+        } finally {
+            setSkeleton(false);
+            setFetchMessage("");
         }
     }
     
@@ -70,9 +88,16 @@ const SearchForm = () => {
             uploadCtx.setIsError(false); // Clear error
             setErr(""); // Clear error message
             setSkeleton(false); // Clear skeleton loading animation
+            setFetchMessage(""); // Clear fetch message indicator
         }
+
         // eslint-disable-next-line 
     }, [uploadCtx.file]);
+
+    useEffect( () => {
+        let fetchId = getFetchMessage();
+        return () => clearInterval(fetchId);
+    }, []);
 
 
     return (
@@ -81,6 +106,10 @@ const SearchForm = () => {
                 uploadCtx.isSelected ?
                     <Fragment>
                         {uploadCtx.isError && <Info err={err} />}
+                        {
+                            skeleton && 
+                                <Info className={s.fetchMssg} err={fetchMessage} />
+                        }
                         <Input
                             type="text"
                             id="searchPhrase"
