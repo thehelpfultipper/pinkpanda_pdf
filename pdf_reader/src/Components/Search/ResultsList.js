@@ -26,7 +26,13 @@ const ResultsList = (props) => {
                                 key={i} 
                                 pageNum={num} 
                                 text={str} 
-                                img={{ url: imgs[i], alt: `Image ${i + 1}` }} 
+                                img={
+                                    { 
+                                        url: process.env.NODE_ENV === 'development' 
+                                        ? 'http://127.0.0.1:5000/' + imgs[i]
+                                        : imgs[i], 
+                                        alt: `Image ${i + 1}` }
+                                } 
                                 />;
                     })}
                 </ul>

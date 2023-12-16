@@ -37,6 +37,13 @@ const SearchForm = () => {
     }
 
     const handleSearch = async () => {
+        // Check the environment
+        const isDevelopment = process.env.NODE_ENV === 'development';
+
+        const apiURL = isDevelopment
+        ? "http://127.0.0.1:5000/search-pdf"
+        : "https://pinkpanda-pdf.onrender.com/search-pdf"
+
         try {
             setMatches([]); // Clear matches
             setScreenshots([]); // Clear screenshots
@@ -60,7 +67,7 @@ const SearchForm = () => {
 
             // let pdfPath = fileInputRef.current.files[0];
 
-            const response = await axios.post("https://pinkpanda-pdf.onrender.com/search-pdf", formData, {
+            const response = await axios.post(apiURL, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 }
