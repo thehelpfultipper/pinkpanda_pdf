@@ -95,6 +95,11 @@ const FileUploadProgress = () => {
         setIsUploaded(false);
     };
 
+    const fileLinkHandler = (e) => {
+        e.preventDefault();
+        setIsSelected(true);
+    }
+
     return (
         <div className={`${s.Progress_wrapper} ${isError ? s.error : ''}`}>
             <div className={s.Progress_icon}>
@@ -132,7 +137,7 @@ const FileUploadProgress = () => {
             <div className={s.Progress_info}>
                 <div className={s.Progress_status}>
                     <span className={s.Progress_text}>
-                        {isUploaded ? <a href='#' rel='noopener nofollow' onClick={() => setIsSelected(true)}>{file.name}</a> : file.name}
+                        {isUploaded ? <a href='#' rel='noopener nofollow' onClick={fileLinkHandler}>{file.name}</a> : file.name}
                     </span>
                     <span className={`${s.Progress_text} ${isError ? s.error : ''}`}>{getFileSizeInKb()}</span>
                 </div>
