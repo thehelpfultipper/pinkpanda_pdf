@@ -7,7 +7,7 @@
     margin-bottom: 50px;
 
 
-    @media (max-width: 425px) {
+    @media (max-width: 525px) {
         flex-direction: column;
         padding-left: 0;
         padding-right: 0;
@@ -15,9 +15,8 @@
 
     .Progress_icon {
         position: relative;
-        // min-width: 52px;
 
-        @media (max-width: 425px) {
+        @media (max-width: 525px) {
             align-self: flex-start;
         }
 

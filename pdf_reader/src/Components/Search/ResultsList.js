@@ -22,18 +22,19 @@ const ResultsList = (props) => {
                         // item => [num, ""]
                         const [num, str] = item;
 
-                        return <ListItem 
-                                key={i} 
-                                pageNum={num} 
-                                text={str} 
-                                img={
-                                    { 
-                                        url: process.env.NODE_ENV === 'development' 
+                        return <ListItem
+                            key={i}
+                            pageNum={num}
+                            text={str}
+                            img={
+                                {
+                                    url: process.env.NODE_ENV === 'development'
                                         ? 'http://127.0.0.1:5000/' + imgs[i]
-                                        : imgs[i], 
-                                        alt: `Image ${i + 1}` }
-                                } 
-                                />;
+                                        : imgs[i],
+                                    alt: `Image ${i + 1}`
+                                }
+                            }
+                        />;
                     })}
                 </ul>
             </div>

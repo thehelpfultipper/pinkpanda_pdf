@@ -11,7 +11,7 @@ const Skeleton = ({ itemsNum, displayNum, dim, dir }) => {
 
         for (let i = 0; i < itemsNum; i++) {
             let itemStyle = {
-                'max-width': dim[i].w,
+                'maxWidth': dim[i].w,
                 width: '100%',
                 height: dim[i].h,
             };
@@ -21,7 +21,7 @@ const Skeleton = ({ itemsNum, displayNum, dim, dir }) => {
         }
 
         itemsArr.push(
-            <div className={s.skeleton__wrapper} key={i + 1} style={dir === 'row' ? { 'flex-direction': 'row' } : { 'flex-direction': 'column' }}>
+            <div className={s.skeleton__wrapper} key={i + 1} style={dir === 'row' ? { 'flexDirection': 'row' } : { 'flexDirection': 'column' }}>
                 {singleItemComponents}
             </div>
         );

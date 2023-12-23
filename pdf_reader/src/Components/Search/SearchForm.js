@@ -23,12 +23,12 @@ const SearchForm = () => {
     const getFetchMessage = () => {
         let msgIndex = 0;
         const messages = ["Fetching data...", "Still fetching data.", "Hang in there! Fetching..."];
-    
+
         const intervalId = setInterval( () => {
             setFetchMessage(messages[msgIndex]);
             msgIndex = (msgIndex + 1) % messages.length;
         }, 5000);
-        
+
         return intervalId;
     }
 
@@ -41,8 +41,8 @@ const SearchForm = () => {
         const isDevelopment = process.env.NODE_ENV === 'development';
 
         const apiURL = isDevelopment
-        ? "http://127.0.0.1:5000/search-pdf"
-        : "https://pinkpanda-pdf.onrender.com/search-pdf"
+            ? "http://127.0.0.1:5000/search-pdf"
+            : "https://pinkpanda-pdf.onrender.com/search-pdf"
 
         try {
             setMatches([]); // Clear matches
@@ -50,7 +50,7 @@ const SearchForm = () => {
             uploadCtx.setIsError(false); // Clear error
             setErr(""); // Clear error message
             setSkeleton(true); // Toggle skeleton loading animation
-            setFetchMessage("Fetching data..."); 
+            setFetchMessage("Fetching data...");
 
             if (searchPhrase === '') {
                 uploadCtx.setIsError(true);
@@ -86,7 +86,7 @@ const SearchForm = () => {
             setFetchMessage("");
         }
     }
-    
+
     useEffect(() => {
         if (uploadCtx.file !== '') {
             setMatches([]); // Clear matches
@@ -114,8 +114,8 @@ const SearchForm = () => {
                     <Fragment>
                         {uploadCtx.isError && <Info err={err} />}
                         {
-                            skeleton && 
-                                <Info className={s.fetchMssg} err={fetchMessage} />
+                            skeleton &&
+                            <Info className={s.fetchMssg} err={fetchMessage} />
                         }
                         <Input
                             type="text"
