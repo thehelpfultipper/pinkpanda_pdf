@@ -4,8 +4,10 @@
 
     .results_wrapper {
         max-height: 800px;
-        padding-left: 2rem;
-        padding-right: 2rem;
+        @media (min-width: 768px) {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
 
         .results_container {
             list-style-type: none;

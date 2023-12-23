@@ -43,6 +43,10 @@ function FileUpload() {
         uploadCtx.setFile(fileInputRef.current.files[0]);
     };
 
+    const handleKeyPress = e => {
+        e.key === 'Enter' && fileInputRef.current.click();
+    }
+
     let fileUploadStatus;
    
     if (isDragging) {
@@ -61,6 +65,8 @@ function FileUpload() {
             <label
                 htmlFor="file"
                 className={s.dragDrop_label}
+                tabIndex="0"
+                onKeyDown={handleKeyPress}
             >
                 browse
             </label>
@@ -86,6 +92,8 @@ function FileUpload() {
             <label
                 htmlFor="file"
                 className={s.dragDrop_label}
+                tabIndex="0"
+                onKeyDown={handleKeyPress}
             >
                 browse
             </label>
@@ -97,6 +105,7 @@ function FileUpload() {
                 className={`${s.dragDrop_file}`}
                 ref={fileInputRef}
                 onInput={fileSelectedHandler}
+                tabIndex="-1"
             />
         </Fragment>
     }
