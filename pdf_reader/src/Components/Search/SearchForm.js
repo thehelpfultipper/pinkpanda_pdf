@@ -22,11 +22,29 @@ const SearchForm = () => {
 
     const getFetchMessage = () => {
         let msgIndex = 0;
+        let lastUpdateTime = Date.now();
         const messages = ["Fetching data...", "Still fetching data.", "Hang in there! Fetching..."];
+        const longMessages = ["Searching for your term–it's like finding a WiFi signal in the desert, but we're getting warmer!", "Your term is playing hide and seek–we're sharpening our seeker skills!", "...we're rolling out the red carpet, fashionably slow!", "Your term is just around the corner!"];
+        const longAF = ["This PDF is longer than a Sunday afternoon nap, but fear not, we're keeping our eyes wide open.", "Your PDF is in marathon mode, but we've got our running shoes on...", "The PDF is unfolding like an epic saga...we're scripting the finale–stay tuned!", "PDF search in progress–your term is on the VIP list, enjoying the wait with a front-row seat!"];
 
+        let cummTime = 0;
         const intervalId = setInterval( () => {
-            setFetchMessage(messages[msgIndex]);
+            const currentTime = Date.now();
+            const ellapsedTime = (currentTime + cummTime) - lastUpdateTime;
+            
+            if(ellapsedTime >= 60000) {
+                setFetchMessage([...longAF, ...messages][msgIndex]);
+            }
+            else if(ellapsedTime >= 30000) {
+                setFetchMessage([...longMessages, ...messages][msgIndex]);
+            } 
+            else {
+                setFetchMessage(messages[msgIndex]);
+            } 
+
             msgIndex = (msgIndex + 1) % messages.length;
+            lastUpdateTime = currentTime;
+            cummTime += 5000;
         }, 5000);
 
         return intervalId;
@@ -102,9 +120,11 @@ const SearchForm = () => {
     }, [uploadCtx.file]);
 
     useEffect( () => {
-        let fetchId = getFetchMessage();
-        return () => clearInterval(fetchId);
-    }, []);
+        if(skeleton) {
+            let fetchId = getFetchMessage();
+            return () => clearInterval(fetchId) && console.log('interval cleared');
+        }
+    }, [skeleton]);
 
 
     return (
