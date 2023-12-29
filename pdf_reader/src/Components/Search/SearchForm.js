@@ -95,7 +95,7 @@ const SearchForm = () => {
             setScreenshots(response.data.screenshots);
         } catch (err) {
             uploadCtx.setIsError(true);
-            setErr('Error searching PDF. Try again.');
+            setErr('Hmm, nothing found. Try again.');
             setSkeleton(false);
             setFetchMessage("");
             console.log("Error searching PDF:", err);
