@@ -34,8 +34,6 @@ function FileUpload() {
         setIsDragging(false);
 
         // Handle dropped filed here
-        // const file = e.dataTransfer.files[0];
-        // console.log(file);
         uploadCtx.setFile(e.dataTransfer.files[0]);
     };
 
@@ -48,7 +46,7 @@ function FileUpload() {
     }
 
     let fileUploadStatus;
-   
+
     if (isDragging) {
         fileUploadStatus = <p>Drop file here</p>;
     } else if (uploadCtx.file) {
@@ -111,15 +109,16 @@ function FileUpload() {
     }
     return (
         <Fragment>
-            {uploadCtx.isError && <Info err={'Oops, something went wrong!'} />}
+            {uploadCtx.isError && <Info err={'Oops, something went wrong. Remember to upload a PDF!'} />}
             <Card className={s.uploadfile}>
-                <CardTitle />   
+                <CardTitle />
                 <div
                     className={`${s.dragDrop_area} ${isDragging ? s.highlight : ""}`}
                     onDragEnter={dragEnterHandler}
                     onDragOver={dragOverHandler}
                     onDragLeave={dragLeaveHandler}
-                    onDrop={dropHandler}>
+                    onDrop={dropHandler}
+                >
                     {fileUploadStatus}
                     <span className={s.disc_upload}>
                         <small>Only one PDF file at a time (max 184MB)</small>

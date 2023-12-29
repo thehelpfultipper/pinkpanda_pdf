@@ -26,9 +26,7 @@ const FileUploadProgress = () => {
     const fileSize = file.size;
 
     useEffect(() => {
-        if (file) {
-            // Display loader
-            // setIsLoading(true);
+        if (file && file.type === 'application/pdf') {
             // Execute file upload
             getPercentage(file);
         } else {
