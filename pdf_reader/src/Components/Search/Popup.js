@@ -18,7 +18,6 @@ const PopupContent = ({ url, onClose }) => {
     let imgRef = useRef(null);
 
     const handleZoomToggle = (e) => {
-        console.log(e.type)
         if (!isDragging && clickThreshold !== 0) {
             setZoom(!zoom);
             setPosition({ x: 0, y: 0 });
