@@ -134,7 +134,7 @@ const FileUploadProgress = () => {
             </div>
             <div className={s.Progress_info}>
                 <div className={s.Progress_status}>
-                    <span className={s.Progress_text}>
+                    <span className={`${s.Progress_text} ${s.Progress_filename}`}>
                         {isUploaded ? <a href='#' rel='noopener nofollow' onClick={fileLinkHandler}>{file.name}</a> : file.name}
                     </span>
                     <span className={`${s.Progress_text} ${isError ? s.error : ''}`}>{getFileSizeInKb()}</span>
