@@ -4,18 +4,18 @@ Welcome to PinkPanda PDF, a feature-packed React-Flask application that takes PD
 
 ## Live Demo
 
-Check out the live demo of the app hosted on GitHub Pages:
+Check out the live demo of the app hosted on GitHub Pages: [PinkPanda PDF](https://thehelpfultipper.github.io/pinkpanda_pdf/)
 
 ## Tutorial
 
-Read how to build this app on our tutorial blog post:
+Read how to build this app in our tutorial blog post: [How To Build A Wicked Cool App With React + Flask](https://thehelpfultipper.com/how-to-build-app-with-react-flask/)
 
 ## Features
-- **Custom Drag & Drop File Input:** Say goodbye to mundane file inputs! Our application comes equipped with a stylish custom drag & drop file input, providing a seamless and engaging user experience.
+- **Custom Drag & Drop File Input:** Say goodbye to mundane file inputs! Our application has a stylish custom drag & drop file input, providing a seamless and engaging user experience.
 
-- **Uploading Animation:** Watch as your PDFs elegantly upload with a delightful animation. We believe in making the process not only functional but also visually appealing.
+- **Uploading Animation:** Watch your PDFs elegantly upload with a delightful animation. We believe in making the process not only functional but also visually appealing.
 
-- **PDF Parsing and Reading:** PinkPanda PDF takes PDF handling seriously. With advanced parsing and reading capabilities, you can explore your PDF documents with ease.
+- **PDF Parsing and Reading:** PinkPanda PDF takes PDF handling seriously. With advanced parsing and reading capabilities, you can easily explore your PDF documents.
 
 - **Pan & Zoom Action on Search Results:** Dive deep into your search results with the ability to pan and zoom. Our application ensures you don't miss any details while navigating through your documents.
 
