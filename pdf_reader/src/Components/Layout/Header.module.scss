@@ -31,7 +31,6 @@
         width: 100%;
         margin: 0 auto;
         border-radius: 50%;
-        background-image: radial-gradient(whitesmoke, var(--theme-pink));
         transition: all .3s ease-in-out;
 
         @media (max-width: 768px) {
@@ -44,10 +43,6 @@
             height: 100%;
             border-radius: inherit;
             vertical-align: middle;
-        }
-
-        &.dark {
-            background-image: radial-gradient(var(--theme-pink), whitesmoke, white);
         }
 
         &.small {

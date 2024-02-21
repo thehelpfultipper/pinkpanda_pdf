@@ -5,7 +5,7 @@ import logo from '../../Assets/logo.svg';
 function Header({start}) {
     return (
         <header className={`${s.header} ${start ? s.start : ''}`}>
-            <div className={`${s.logo} ${s.dark} ${start ? s.small : ''}`}>
+            <div className={`${s.logo} ${start ? s.small : ''}`}>
                 <img src={logo} alt="Pink Panda logo" />
             </div>
             <h1>
